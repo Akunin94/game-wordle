@@ -302,7 +302,6 @@
   <span>Тема:</span>
   <button class="toggle-btn active" id="btn-light" onclick="setTheme('light')">Light</button>
   <button class="toggle-btn" id="btn-dark" onclick="setTheme('dark')">Dark</button>
-  <button class="toggle-btn" id="btn-cb" onclick="setTheme('colorblind')">Colorblind</button>
 </div>
 
 <!-- Board -->
@@ -571,12 +570,11 @@ document.addEventListener('keydown', e => {
 
 // ─── Theme ─────────────────────────────────────────────────────────
 function setTheme(t) {
-  document.body.classList.remove('dark','colorblind');
-  ['light','dark','colorblind'].forEach(id => {
+  document.body.classList.remove('dark');
+  ['light','dark'].forEach(id => {
     document.getElementById('btn-'+id).classList.toggle('active', id===t);
   });
   if (t==='dark') document.body.classList.add('dark');
-  if (t==='colorblind') document.body.classList.add('colorblind');
 }
 
 function toggleSettings() { showToast('Settings screen'); }

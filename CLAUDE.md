@@ -99,7 +99,7 @@ EXPO_PUBLIC_GOOGLE_AUTH_CLIENT_ID_WEB
 |-----|----------|--------|
 | 1 | npm install + tsc --noEmit = 0 ошибок | ✅ готово |
 | 2 | Пересмотр списка слов (носитель) | ⬜ не начат |
-| 3 | Assets (icon, splash, favicon) | ⬜ не начат |
+| 3 | Assets (icon, splash, favicon) | ✅ готово |
 | 4 | ESLint конфиг | ⬜ не начат |
 | 5 | Юнит-тесты | ⬜ не начат |
 | 6 | Rewarded-ad UI | ⬜ не начат |

@@ -126,13 +126,13 @@ games/wordle/
 
 ---
 
-### [ ] Шаг 3. Добавить assets
+### [x] Шаг 3. Добавить assets ✓
 
-- [ ] Создать `assets/icon.png` — 1024×1024 PNG (зелёный тайл «W» на тёмном фоне)
-- [ ] Создать `assets/splash.png` — 1284×2778 PNG
-- [ ] Создать `assets/adaptive-icon.png` — 1024×1024 PNG
-- [ ] Создать `assets/favicon.png` — 48×48 PNG
-- [ ] Убедиться, что `app.json` ссылается на все четыре файла и `expo prebuild` не падает
+- [x] Создать `assets/icon.png` — 1024×1024 PNG ✓
+- [x] Создать `assets/splash.png` — 1284×2778 PNG ✓
+- [x] Создать `assets/adaptive-icon.png` — 1024×1024 PNG ✓
+- [x] Создать `assets/favicon.png` — 48×48 PNG ✓
+- [ ] Убедиться, что `expo prebuild` не падает (проверить на шаге 10)
 
 ---
 
