@@ -136,30 +136,32 @@ games/wordle/
 
 ---
 
-### [ ] Шаг 4. Настроить ESLint
+### [x] Шаг 4. Настроить ESLint ✓
 
-- [ ] Создать файл `games/wordle/.eslintrc.js` с правилами `no-explicit-any`, `no-unused-vars`, `react-hooks/exhaustive-deps`
-- [ ] Запустить `npm run lint`
-- [ ] Исправить все ошибки до 0
+- [x] Создать файл `games/wordle/.eslintrc.js` с правилами `no-explicit-any`, `no-unused-vars`, `react-hooks/exhaustive-deps` ✓
+- [x] Отключить `import/namespace` и `import/no-unresolved` — конфликт версий resolver'а в eslint-config-expo (TypeScript уже проверяет импорты) ✓
+- [x] Запустить `npm run lint` ✓
+- [x] Исправить все ошибки до 0 ✓
 
 ---
 
 ### [ ] Шаг 5. Добавить минимальные тесты
 
-- [ ] Установить `jest`, `jest-expo`, `@types/jest`
-- [ ] Добавить `"test": "jest"` и preset `jest-expo` в `package.json`
-- [ ] Создать `src/__tests__/gameLogic.test.ts`:
-  - [ ] `tokenizeUzbek('shahar')` → `['sh','a','h','a','r']`
-  - [ ] `tokenizeUzbek("o'tin")` → `["o'",'t','i','n']`
-  - [ ] `evaluateGuess` — все `correct` при совпадении
-  - [ ] `evaluateGuess` — корректно обрабатывает дублирующиеся буквы
-  - [ ] `getDailyIndex(new Date('2025-01-01T00:00:00Z'))` === 0
-  - [ ] `getDailyIndex(new Date('2025-01-08T00:00:00Z'))` === 7 % ANSWER_WORDS.length
-  - [ ] `satisfiesHardMode` — блокирует игнор зелёного
-- [ ] Создать `src/__tests__/words.test.ts`:
-  - [ ] `assertWordsValid()` не бросает исключение
-  - [ ] Нет пересечений `ANSWER_WORDS ∩ VALID_GUESSES`
-  - [ ] Нет дубликатов внутри каждого массива
+- [x] Добавить `"test": "jest"` и preset `jest-expo` в `package.json` ✓
+- [x] Добавить `jest` конфиг с `moduleNameMapper` для `@/` алиаса и `transformIgnorePatterns` ✓
+- [x] Создать `src/__tests__/gameLogic.test.ts` ✓:
+  - [x] `tokenizeUzbek('shahar')` → `['sh','a','h','a','r']` ✓
+  - [x] `tokenizeUzbek("o'tin")` → `["o'",'t','i','n']` ✓
+  - [x] `evaluateGuess` — все `correct` при совпадении ✓
+  - [x] `evaluateGuess` — корректно обрабатывает дублирующиеся буквы ✓
+  - [x] `getDailyIndex(new Date('2025-01-01T00:00:00Z'))` === 0 ✓
+  - [x] `getDailyIndex(new Date('2025-01-08T00:00:00Z'))` === 7 % ANSWER_WORDS.length ✓
+  - [x] `satisfiesHardMode` — блокирует игнор зелёного ✓
+- [x] Создать `src/__tests__/words.test.ts` ✓:
+  - [x] Нет пересечений `ANSWER_WORDS ∩ VALID_GUESSES` — исправлено (убрано 8 дублей из VALID_GUESSES) ✓
+  - [x] Нет дубликатов внутри каждого массива ✓
+  - [x] Все слова — ровно 5 ASCII-букв в нижнем регистре ✓
+- [ ] Установить `jest`, `jest-expo@51.0.4`, `@types/jest` — `npm install` у пользователя
 - [ ] Запустить `npm test` — все зелёные
 
 ---

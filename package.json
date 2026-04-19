@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest",
     "build:android": "eas build --platform android",
     "build:ios": "eas build --platform ios",
     "submit:android": "eas submit --platform android",
@@ -46,7 +47,20 @@
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.0",
     "eslint-config-expo": "^7.1.2",
+    "jest": "^29.7.0",
+    "jest-expo": "~51.0.4",
+    "@types/jest": "^29.5.12",
     "typescript": "~5.3.3"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "testMatch": ["<rootDir>/src/__tests__/**/*.test.ts"],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ]
   },
   "private": true
 }

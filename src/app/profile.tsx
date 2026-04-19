@@ -272,7 +272,7 @@ function StatsCard({
   theme: import('@/constants/colors').ThemeTokens;
   t: (k: 'gamesPlayed' | 'winPct' | 'currentStreak' | 'maxStreak') => string;
 }) {
-  const items: Array<{ label: string; value: number }> = [
+  const items: { label: string; value: number }[] = [
     { label: t('gamesPlayed'), value: stats.gamesPlayed },
     { label: t('winPct'), value: winPct },
     { label: t('currentStreak'), value: stats.currentStreak },
