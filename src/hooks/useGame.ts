@@ -38,6 +38,7 @@ type Action =
   | { type: 'REMOVE_LETTER' }
   | { type: 'SUBMIT_SUCCESS'; row: GuessRow; status: GameStatus; letterStates: GameState['letterStates'] }
   | { type: 'SHAKE'; message: string }
+  | { type: 'SHOW_TOAST'; message: string }
   | { type: 'CLEAR_TOAST' }
   | { type: 'RESET_SHAKE' };
 
@@ -72,6 +73,9 @@ function reducer(state: GameState, action: Action): GameState {
     case 'SHAKE':
       toastSeq += 1;
       return { ...state, shake: true, toast: { message: action.message, id: toastSeq } };
+    case 'SHOW_TOAST':
+      toastSeq += 1;
+      return { ...state, toast: { message: action.message, id: toastSeq } };
     case 'CLEAR_TOAST':
       return { ...state, toast: null };
     case 'RESET_SHAKE':
@@ -170,6 +174,7 @@ export interface UseGameResult {
   pressBackspace: () => void;
   pressEnter: () => void;
   revealRandomLetter: () => string | null;
+  showHint: (message: string) => void;
 }
 
 export function useGame(options: UseGameOptions): UseGameResult {
@@ -321,6 +326,10 @@ export function useGame(options: UseGameOptions): UseGameResult {
     }
   }, [state]);
 
+  const showHint = useCallback((message: string) => {
+    dispatch({ type: 'SHOW_TOAST', message });
+  }, []);
+
   const revealRandomLetter = useCallback((): string | null => {
     if (state.status !== 'playing') return null;
     // Pick a solution letter that hasn't yet been shown as correct.
@@ -340,7 +349,7 @@ export function useGame(options: UseGameOptions): UseGameResult {
   }, [state]);
 
   return useMemo(
-    () => ({ state, pressLetter, pressBackspace, pressEnter, revealRandomLetter }),
-    [state, pressLetter, pressBackspace, pressEnter, revealRandomLetter],
+    () => ({ state, pressLetter, pressBackspace, pressEnter, revealRandomLetter, showHint }),
+    [state, pressLetter, pressBackspace, pressEnter, revealRandomLetter, showHint],
   );
 }

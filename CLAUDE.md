@@ -7,19 +7,15 @@
 
 ## ⚡ СЛЕДУЮЩИЙ ШАГ — читать первым
 
-**Шаг 6: Rewarded-ad UI «Harfni ochish»**
+**Шаг 7: Supabase — реальный проект**
 
-Что нужно сделать в одном файле — `src/app/index.tsx`:
-
-1. Добавить кнопку «Harfni ochish 🎁» (показывать когда: `!isAdFree && submittedGuesses.length >= 3 && status === 'playing'`)
-2. По нажатию: `showRewarded()` (из `useAds`) → в колбэке `onEarnedReward` → `revealRandomLetter()` (из `useGame`) → показать Toast с подсказкой
-3. Кнопку разместить между Board и Keyboard, стилизовать в цветах темы (`theme.key` / `theme.absent`)
-
-Хуки уже готовы:
-- `useGame` → `revealRandomLetter(): void` — открывает случайную неизвестную букву, пишет в state
-- `useAds` → `showRewarded(): void` — показывает rewarded-рекламу, есть колбэк `onEarnedReward`
-
-После шага 6 — **Шаг 7**: создать реальный проект на supabase.com и заполнить `.env`.
+1. Зайти на supabase.com → создать новый проект
+2. Запустить миграцию: `supabase/migrations/001_initial.sql` через SQL Editor
+3. Скопировать `.env.example` → `.env` и заполнить:
+   - `EXPO_PUBLIC_SUPABASE_URL` — Project URL
+   - `EXPO_PUBLIC_SUPABASE_ANON_KEY` — anon/public key
+4. Проверить: `npm run typecheck` и `npm test` — должны быть зелёными
+5. Включить Google OAuth в Supabase → Auth → Providers → Google (нужны Client IDs из app.json)
 
 ---
 
@@ -113,7 +109,7 @@ EXPO_PUBLIC_GOOGLE_AUTH_CLIENT_ID_WEB
 
 ## Текущий статус (обновлять после каждой сессии)
 
-**Последнее обновление:** 19 апреля 2026
+**Последнее обновление:** 19 апреля 2026 (сессия 2)
 
 | Шаг | Описание | Статус |
 |-----|----------|--------|
@@ -122,7 +118,7 @@ EXPO_PUBLIC_GOOGLE_AUTH_CLIENT_ID_WEB
 | 3 | Assets (icon, splash, favicon) | ✅ готово |
 | 4 | ESLint конфиг | ✅ готово |
 | 5 | Юнит-тесты | ✅ готово |
-| 6 | Rewarded-ad UI | ⬜ не начат |
+| 6 | Rewarded-ad UI | ✅ готово |
 | 7 | Supabase (реальный проект) | ⬜ не начат |
 | 8 | AdMob (реальные ID) | ⬜ не начат |
 | 9 | IAP в сторах | ⬜ не начат |

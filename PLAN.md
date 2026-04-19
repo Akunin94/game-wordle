@@ -166,11 +166,11 @@ games/wordle/
 
 ---
 
-### [ ] Шаг 6. Rewarded-ad UI «Harfni ochish»
+### [x] Шаг 6. Rewarded-ad UI «Harfni ochish»
 
-- [ ] В `src/app/index.tsx` добавить кнопку «Harfni ochish» (условие: `!isAdFree && submittedGuesses.length >= 3 && status === 'playing'`)
-- [ ] Подключить обработчик: `showRewarded()` → `revealRandomLetter()` → показать hint в `Toast`
-- [ ] Проверить визуально: кнопка появляется и скрывается в нужный момент
+- [x] В `src/app/index.tsx` добавить кнопку «Harfni ochish» (условие: `!isAdFree && submittedGuesses.length >= 3 && status === 'playing'`)
+- [x] Подключить обработчик: `showRewarded()` → `revealRandomLetter()` → показать hint в `Toast`
+- [ ] Проверить визуально: кнопка появляется и скрывается в нужный момент (требует устройства)
 
 ---
 

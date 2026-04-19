@@ -70,6 +70,13 @@ export default function GameScreen() {
     onFinish,
   });
 
+  const handleRevealLetter = useCallback(async () => {
+    const earned = await ctx.ads.showRewarded();
+    if (!earned) return;
+    const hint = game.revealRandomLetter();
+    if (hint) game.showHint(hint);
+  }, [ctx.ads, game]);
+
   // If the screen mounts and the current game is already over, show the modal.
   useEffect(() => {
     if (
@@ -130,6 +137,22 @@ export default function GameScreen() {
           status={game.state.status}
         />
       </View>
+
+      {!ctx.ads.isAdFree &&
+        game.state.submittedGuesses.length >= 3 &&
+        game.state.status === 'playing' && (
+          <Pressable
+            onPress={() => { void handleRevealLetter(); }}
+            style={({ pressed }) => [
+              styles.hintBtn,
+              { backgroundColor: ctx.theme.keyDefault, opacity: pressed ? 0.7 : 1 },
+            ]}
+          >
+            <Text style={[styles.hintBtnText, { color: ctx.theme.keyText }]}>
+              Harfni ochish 🎁
+            </Text>
+          </Pressable>
+        )}
 
       <Keyboard
         theme={ctx.theme}
@@ -264,5 +287,16 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 8,
     borderWidth: 1,
+  },
+  hintBtn: {
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    marginBottom: 8,
+  },
+  hintBtnText: {
+    fontSize: 15,
+    fontWeight: '700',
   },
 });
